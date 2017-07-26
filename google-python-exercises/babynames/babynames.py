@@ -35,6 +35,11 @@ Suggested milestones for incremental development:
 """
 
 def extract_names(filename):
+  """extract the year_string, and print it"""
+  year_string_str = str(filename)
+  year_string = year_string_str[4:7]
+
+  print year_string
   """
   Given a file name for baby.html, returns a list starting with the year string
   followed by the name-rank strings in alphabetical order.
