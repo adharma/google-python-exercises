@@ -1,4 +1,4 @@
-#!/usr/bin/python2.4 -tt
+#!/usr/bin/python
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
@@ -33,9 +33,12 @@ def verbing(s):
 # Return the resulting string.
 # So 'This dinner is not that bad!' yields:
 # This dinner is good!
+import re
 def not_bad(s):
+  not_bad_to_good = re.sub(r"not.*(?<=bad)", "good", s)
+  # not_bad_to_good = s.replace(str('not% bad'), 'good')
   # +++your code here+++
-  return
+  return not_bad_to_good
 
 
 # F. front_back
