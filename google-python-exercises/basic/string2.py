@@ -2,7 +2,7 @@
 # Copyright 2010 Google Inc.
 # Licensed under the Apache License, Version 2.0
 # http://www.apache.org/licenses/LICENSE-2.0
-
+################### finished !!!!
 # Google's Python Class
 # http://code.google.com/edu/languages/google-python-class/
 
@@ -15,6 +15,7 @@
 # add 'ly' instead.
 # If the string length is less than 3, leave it unchanged.
 # Return the resulting string.
+
 def verbing(s):
   if len(s) < 3:
     return s
