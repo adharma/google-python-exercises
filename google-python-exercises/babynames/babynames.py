@@ -36,17 +36,29 @@ Suggested milestones for incremental development:
 
 def extract_names(filename):
   """extract the year_string, and print it"""
-  year_string_str = str(filename)
-  year_string = year_string_str[4:7]
+  in_file = open(filename)
+  contents = in_file.read()
+  year_string = re.findall(r'Popularity\sin\s(\d\d\d\d)', contents)
+  names_string = re.findall(r'<td>(\d+)</td><td>(\w+)</td><td>(\w+)</td>', contents)
+  new_list = []
 
-  print year_string
+  """store each male name and female name of the names_string list, in a new list"""
+  for i in names_string:
+    male_entry = str(i[1]) + " " + str(i[0])
+    new_list.append(male_entry)
+    female_entry = str(i[2]) + " " + str(i[0])
+    new_list.append(female_entry)   
+  """sort the list. Insert the year_string value, as the first entry"""
+  new_list.sort()
+  new_list.insert(0, str(year_string[0]))
+  text = '\n'.join(new_list) + '\n'
   """
   Given a file name for baby.html, returns a list starting with the year string
   followed by the name-rank strings in alphabetical order.
   ['2006', 'Aaliyah 91', Aaron 57', 'Abagail 895', ' ...]
   """
   # +++your code here+++
-  return
+  return text
 
 
 def main():
@@ -64,10 +76,22 @@ def main():
   if args[0] == '--summaryfile':
     summary = True
     del args[0]
-
   # +++your code here+++
+  """open a file for writing"""
+  
+  # the_filename = "test.txt"
+  x = 0
+  for i in args:
+    the_filename = i + ".summary"
+    with open(the_filename, 'w') as f:
+      for s in extract_names(i):
+        f.write(s)
+    x += 1
+
+  print extract_names(i)
   # For each filename, get the names, then either print the text output
   # or write it to a summary file
   
+
 if __name__ == '__main__':
   main()
